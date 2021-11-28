@@ -1,0 +1,14 @@
+.post{
+
+}
+
+.post img{
+    display: inline;
+    width : 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.post h3{
+    display: inline;
+}
