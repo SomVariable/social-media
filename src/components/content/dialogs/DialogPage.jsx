@@ -2,16 +2,20 @@ import React from 'react';
 import style from './dialogs.module.css'
 import DialogItem from "./dialogsItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addNewMessageCreator, changeMessageCreator} from "../../../redux/dialogReducer";
 
 function DialogPage(props) {
     const onMessageSend = () => {
-        props.dispatch(addNewMessageCreator({id: new Date().getMinutes().toString() + new Date().getSeconds() + new Date().getDay() - 0 , userName: 'Kostya'}))
+        const userData = {
+            id: new Date().getMinutes().toString() + new Date().getSeconds() + new Date().getDay() - 0 ,
+            userName: 'Kostya'
+        }
+        props.onMessageSend(userData)
     }
 
     const onMessageChange = e => {
-        props.dispatch(changeMessageCreator(e.target.value))
+        props.onMessageChange(e.target.value)
     }
+
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
@@ -23,7 +27,6 @@ function DialogPage(props) {
                     <div className=""><textarea cols="30" rows="1" onChange={onMessageChange} value={props.dialogsData.messageBody}/></div>
                     <button onClick={onMessageSend}>Send</button>
                 </div>
-
             </div>
         </div>
     );

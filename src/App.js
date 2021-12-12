@@ -9,7 +9,7 @@ function App(props) {
           <div className="App-wrapper">
               <Header/>
               <Sidebar/>
-              <Content content = {props.state.content} dispatch = {props.dispatch} />
+              <Content/>
           </div>
   );
 }

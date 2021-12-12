@@ -25,7 +25,7 @@ const store = {
         }
     },
     _render() {
-        console.log('state changed')
+        console.log('state chanаааааged')
     },
 
     getState (){
