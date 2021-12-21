@@ -1,14 +1,18 @@
 import React from 'react';
-
+import style from './user.module.css'
+import defaultAvatar from "../../../../images/defal_avatar.png"
 const User = props => {
 
     return (
         <div>
             <div>
-                <img src = {props.user.img} />
+                <img className={style.img} src = {props.user.photo? props.user.photo: defaultAvatar} />
+                {props.user.name}
             </div>
-            <div> {props.user.fullName} </div>
-            {props.user.follow? <button>Unfollow</button>: <button>Follow</button>}
+            <div> {`email: ${props.user.email}`} </div>
+            <div> {`status: ${props.user.status}`} </div>
+            <div> {`City: ${props.user.city}`} </div>
+            {props.user.follow? <button onClick={() => props.unfollowUser(props.user.id)}>Unfollow</button>: <button onClick={() => props.followUser(props.user.id)}>Follow</button>}
         </div>
     );
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import Post from "../post/Post";
 
 function MyPosts(props) {
-    console.log(props)
     const postRef = React.createRef();
     const onAddPost = ()=>{
         const newPost = {

@@ -1,0 +1,16 @@
+.pagination{
+    display: flex;
+}
+
+.page{
+    margin-left: 10px;
+}
+
+.page:hover{
+    cursor: pointer;
+}
+
+.selected{
+    color: red;
+    font-weight: bold;
+}

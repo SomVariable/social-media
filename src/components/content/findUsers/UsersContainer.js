@@ -1,24 +1,38 @@
 import React from "react"
 import {connect} from "react-redux";
 import Users from "./Users";
-import {followUserActionCreator, setUsersActionCreator, unfollowUserActionCreator} from "../../../redux/usersReducers";
+import {
+    followUserActionCreator, setSelectedActionCreator, setsELECTEDActionCreator,
+    setTotalCountActionCreator,
+    setUsersActionCreator,
+    unfollowUserActionCreator
+} from "../../../redux/usersReducers";
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersState.users
+        users: state.usersState.users,
+        currentPage: state.usersState.currentPage,
+        totalCount: state.usersState.totalCount,
+        limit: state.usersState.limit
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        followUserActionCreator: (user) => {
-            dispatch(followUserActionCreator(user))
+        followUserActionCreator: (userId) => {
+            dispatch(followUserActionCreator(userId))
         },
-        unfollowUserActionCreator: (user) => {
-            dispatch(unfollowUserActionCreator(user))
+        unfollowUserActionCreator: (userId) => {
+            dispatch(unfollowUserActionCreator(userId))
         },
-        setUsersActionCreator: () => {
-
+        setUsersActionCreator: (newUsers) => {
+            dispatch(setUsersActionCreator(newUsers))
+        },
+        setTotalCountActionCreator: (totalCount) => {
+            dispatch(setTotalCountActionCreator((totalCount)))
+        },
+        setSelectedActionCreator: (selectedPage) => {
+            dispatch(setSelectedActionCreator(selectedPage))
         }
     }
 }
