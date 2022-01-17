@@ -2,13 +2,14 @@ import React from 'react';
 import style from './user.module.css'
 import defaultAvatar from "../../../../images/defal_avatar.png"
 import Preloader from "../../../../common/Preloader";
+import {NavLink} from "react-router-dom";
 const User = props => {
     return (
         <>
             {props.isFetching? <Preloader/>:
             <div>
                 <div>
-                    <img className={style.img} src = {props.user.photo? props.user.photo: defaultAvatar} />
+                    <NavLink to = {'/users/' + props.user.id}><img className={style.img} src = {props.user.photo? props.user.photo: defaultAvatar} /></NavLink>
                     {props.user.name}
                 </div>
                 <div> {`email: ${props.user.email}`} </div>

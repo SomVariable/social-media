@@ -10,7 +10,6 @@ import {
     unfollowUserActionCreator
 } from "../../../redux/usersReducers";
 import * as axios from "axios";
-import servData from "../../../servData/servData";
 
 class UsersApi extends React.Component{
     constructor(props) {
@@ -20,19 +19,9 @@ class UsersApi extends React.Component{
     componentDidMount() {
         console.log(this.props)
         this.props.setIsFetchingActionCreator(true)
-        axios.get(`https://gorest.co.in/public/v1/users?page=${this.props.currentPage}`).then(response => {
-            const updatedData = response.data.data.map(u => {
-                const randomIntForGeneration = Math.floor(Math.random()*10)
-                const follow = randomIntForGeneration > 5
-                const city = servData.cityes.slice(randomIntForGeneration, randomIntForGeneration+1).join('')
-                return {
-                    ...u,
-                    follow: follow,
-                    city: city
-                }
-            })
-            this.props.setUsersActionCreator(updatedData)
-            this.props.setTotalCountActionCreator(response.data.meta.pagination.total)
+        axios.get(`https://ancient-lake-62401.herokuapp.com/api/users?page=${this.props.currentPage}`).then(response => {
+            this.props.setUsersActionCreator(response.data.data.users)
+            this.props.setTotalCountActionCreator(response.data.meta.count)
             this.props.setIsFetchingActionCreator(false)
         })
     }
@@ -40,19 +29,9 @@ class UsersApi extends React.Component{
     onPage = (page) => {
         this.props.setSelectedActionCreator(page)
         this.props.setIsFetchingActionCreator(true)
-        axios.get(`https://gorest.co.in/public/v1/users?page=${page}`).then(response => {
-            const updatedData = response.data.data.map(u => {
-                const randomIntForGeneration = Math.floor(Math.random()*10)
-                const follow = randomIntForGeneration > 5
-                const city = servData.cityes.slice(randomIntForGeneration, randomIntForGeneration+1).join('')
-                return {
-                    ...u,
-                    follow: follow,
-                    city: city
-                }
-            })
-            this.props.setUsersActionCreator(updatedData)
-            this.props.setTotalCountActionCreator(response.data.meta.pagination.total)
+        axios.get(`https://ancient-lake-62401.herokuapp.com/api/users?page=${page}`).then(response => {
+            this.props.setUsersActionCreator(response.data.data.users)
+            this.props.setTotalCountActionCreator(response.data.meta.count)
             this.props.setIsFetchingActionCreator(false)
         })
     }
