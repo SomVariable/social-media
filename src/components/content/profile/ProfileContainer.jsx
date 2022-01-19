@@ -15,11 +15,10 @@ function useWithRouter(props) {
 class ProfileContainer extends Component {
     constructor(props) {
         super(props);
-        debugger
     }
 
     componentDidMount() {
-        axios.get(`https://ancient-lake-62401.herokuapp.com/api/users?`).then(response => {
+        axios.get(`https://ancient-lake-62401.herokuapp.com/api/users?user=4`).then(response => {
             this.props.setProfileInfoActionCreator(response.data.data.user)
         })
     }

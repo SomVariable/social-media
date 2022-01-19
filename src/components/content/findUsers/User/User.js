@@ -9,7 +9,7 @@ const User = props => {
             {props.isFetching? <Preloader/>:
             <div>
                 <div>
-                    <NavLink to = {'/users/' + props.user.id}><img className={style.img} src = {props.user.photo? props.user.photo: defaultAvatar} /></NavLink>
+                    <NavLink to = {'/users/' + props.user.id}><img className={style.img} src = {props.user.avatar? props.user.avatar: defaultAvatar} /></NavLink>
                     {props.user.name}
                 </div>
                 <div> {`email: ${props.user.email}`} </div>
