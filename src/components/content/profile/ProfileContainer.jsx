@@ -3,12 +3,12 @@ import ProfilePage from "./ProfilePage";
 import {connect} from "react-redux";
 import {setProfileInfoActionCreator} from "../../../redux/profileReducer";
 import * as axios from "axios";
-import {useLocation} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 
 function useWithRouter(props) {
-    const location = useLocation()
-    return <ProfileContainer {...props} location = {location}></ProfileContainer>
+    const params = useParams()
+    return <ProfileContainer {...props} params = {params}></ProfileContainer>
 }
 
 
@@ -18,7 +18,9 @@ class ProfileContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get(`https://ancient-lake-62401.herokuapp.com/api/users?user=4`).then(response => {
+        const userId = this.props.params.userId || '61dee631bede3f956b864fea';
+        axios.get(`https://ancient-lake-62401.herokuapp.com/api/users?userId=${userId}`).then(response => {
+            console.log(response)
             this.props.setProfileInfoActionCreator(response.data.data.user)
         })
     }

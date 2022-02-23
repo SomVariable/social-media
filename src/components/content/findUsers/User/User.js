@@ -9,13 +9,13 @@ const User = props => {
             {props.isFetching? <Preloader/>:
             <div>
                 <div>
-                    <NavLink to = {'/users/' + props.user.id}><img className={style.img} src = {props.user.avatar? props.user.avatar: defaultAvatar} /></NavLink>
+                    <NavLink to = {`/profile/${props.user._id}`}><img className={style.img} src = {props.user.avatar? props.user.avatar: defaultAvatar} /></NavLink>
                     {props.user.name}
                 </div>
                 <div> {`email: ${props.user.email}`} </div>
                 <div> {`status: ${props.user.status}`} </div>
                 <div> {`City: ${props.user.city}`} </div>
-                {props.user.follow? <button onClick={() => props.unfollowUser(props.user.id)}>Unfollow</button>: <button onClick={() => props.followUser(props.user.id)}>Follow</button>}
+                {props.user.follow? <button onClick={() => props.unfollowUser(props.user._id)}>Unfollow</button>: <button onClick={() => props.followUser(props.user._id)}>Follow</button>}
             </div>
             }
 </> );

@@ -65,6 +65,7 @@ const usersReducers = (state = initState, action) => {
 export default usersReducers
 
 export const followUserActionCreator = (userId) => {
+    debugger
     return {type: FOLLOW, userId}
 }
 
